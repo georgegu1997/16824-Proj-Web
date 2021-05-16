@@ -8,6 +8,15 @@
 \usepackage{subcaption}
 \usepackage{amsmath}
 \usepackage{media9}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
 
 \newcommand{\etal}{\textit{et al.}}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
@@ -37,7 +46,7 @@ Therefore, in the project, we explore the usage of Point Pair Features (PPF), a 
 We adapt the widely-used PointNet \cite{Qi2017pointnet}, PointNet\texttt{++} \cite{qi2017pointnet2} and Dynamic Graph CNN (DGCNN) \cite{Wang2019-dgcnn} structures and change their input to per-point PPF featurizaion instead of pure 3D point coordinates. 
 We design several simple sampling strategies to select the reference point and convert each point in the point cloud to the 4-dimensional PPF vector. We demonstrate that incorporating PPF features can greatly improve the rotation robustness in the absence of training-time rotation augmentation. 
 However, when applying training time augmentation used in \cite{qi2017pointnet2}, we found that PPF featurization leads to unstable performance. We hypothesize that this is because the straightforward sampling strategies we adopt are not robust to point cloud perturbation.
-Moreover, taking the inspiration from PointNet\texttt{++} \cite{qi2017pointnet2}, we incorporate the PPF featurization in the first point set abstraction layer and use sampled group centers as reference points, which improved the test time classification accuracy by 1.84\%.
+Moreover, taking the inspiration from PointNet\texttt{++} \cite{qi2017pointnet2}, we incorporate the PPF featurization in the first point set abstraction layer and use sampled group centers as reference points, which improved the test time classification accuracy by 1.84\%. The source code of this project can be found \href{http://www.overleaf.com}{here}. 
 
 % This is because PointNet, as one of the earliest explorations on point cloud learning, has a simple network structure and is designed to be invariant to the order of points. 
 % Then taking the inspiration from PointNet++ \cite{qi2017pointnet2}, we will design a hierarchical learning framework by stacking multiple stages. Note that one key insight of PPF is computing relative relationship between points as distances and relative angles. We would also explore the idea of computing relative relations between point features in the latent space (e.g. abstract point features in the intermediate layers of PointNet++). 
