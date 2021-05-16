@@ -146,28 +146,12 @@ We also incorporated the PPF featurization into the hierarchical architecture of
 
 To evaluate our design of PPF featurization, we use the ModelNet40~\cite{Wu2015-3dshapenet} dataset. ModelNet40 contains 12,308 CAD models of 40 different categories, which are split into a training set of 9,840 objects and a testing set of 2,468 objects. We sub-sampled the CAD models and get 2,048 points for each point cloud, together with their surface normal vectors. We adopt the point cloud classification task, where the network is going to output a 40-dimensional probability distribution, one for each category. In the experiments below, we report the classification accuracy averaged over 40 categories. 
 
-\begin{table}[hbt!]
-    \centering
-    \begin{tabular}{ll|c|cc}\hline\hline
-         \multicolumn{2}{c|}{\multirow{2}{*}{Architecture}} & Training w/o Augmentation & \multicolumn{2}{c}{Training w/ Augmentation} \\\cline{3-5}
-         & & \texttt{Rotated} & \texttt{Original} & \texttt{Rotated} \\\hline
-         PointNet \cite{Qi2017pointnet} & \multicolumn{1}{|l|}{$Spatial$} & 21.68 & - & - \\
-         & \multicolumn{1}{|l|}{$Spatial+Normal$} & 22.56 & 81.50 & 77.80 \\
-         & \multicolumn{1}{|l|}{$PPF\ (Random)$} & 64.30 & - & - \\
-         & \multicolumn{1}{|l|}{$PPF\ (Center)$} & \textbf{73.79} & 26.07 & 25.35 \\
-         & \multicolumn{1}{|l|}{$PPF\ (Farthest)$} & 60.82 & - & - \\\hline
-         PointNet\texttt{++ \cite{qi2017pointnet2}} & \multicolumn{1}{|l|}{$Spatial\texttt{++}Normal$} & 28.85 & \textbf{87.01} & 84.30 \\
-         & \multicolumn{1}{|l|}{$PPF\ (Center)$} & 53.24 & - & - \\
-         & \multicolumn{1}{|l|}{$PPF\ (Anchor)$} & \textbf{69.69} & 86.28 & \textbf{86.14}  \\\hline
-         DGCNN \cite{Wang2019-dgcnn} & \multicolumn{1}{|l|}{$Spatial$} & 26.68 & - & - \\
-         & \multicolumn{1}{|l|}{$Spatial\texttt{+}Normal$} & 29.96 & 86.80 & 84.22 \\
-         & \multicolumn{1}{|l|}{$PPF\ (Random)$} & 73.08 & - & - \\
-         & \multicolumn{1}{|l|}{$PPF\ (Center)$} & \textbf{77.94} & 45.51 & 46.00 \\
-         & \multicolumn{1}{|l|}{$PPF\ (Farthest)$} & 72.60 & - & - \\\hline\hline
-    \end{tabular}
+\begin{figure}[hbt!]
+\centering
+    \includegraphics[width=.9\linewidth]{images/table.png}
     \caption{Testing class accuracy on different networks, PPF sampling strategies and training augmentation. The \texttt{Training w/o Augmentation} column shows the result of training on different PPF sampling strategies. The \texttt{Train w/ Augmentation} column shows the result of training on the augmented training point clouds and testing with \texttt{Original} and \texttt{Rotation} test sets.}
-    \label{tab:my_label}
-\end{table}
+\label{fig:table}
+\end{figure}
 
 \subsection{PPF Sampling Strategies}
 
